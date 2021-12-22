@@ -1,0 +1,15 @@
+﻿
+this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormWeb_KeyUp);
+        private void FormWeb_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                ToggleFullScreen(false);
+            if (e.KeyCode == Keys.F11)
+                ToggleFullScreen(true);
+        }
+
+            //int WM_KEYDOWN = 256;
+            //int WM_SYSKEYDOWN = 260;
+            //if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
+            {
+            }
