@@ -2,3 +2,4 @@
 *.pdb
 /obj
 bin/Debug/libcef.dll
+/bin/Debug/*.log

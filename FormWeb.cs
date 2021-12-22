@@ -24,7 +24,7 @@ namespace TinyBrowser
         bool _showHtml = true;  // 是否查看网页源代码
         bool _userServer = false; // 是否使用嵌入服务器
         TinyWebServer _server = new TinyWebServer();
-
+        KeyboardHook _hook = new KeyboardHook();
 
         //---------------------------------------------
         // 初始化
@@ -54,6 +54,11 @@ namespace TinyBrowser
 
         private void FormPosition_Load(object sender, EventArgs e)
         {
+            // 全局键盘钩子
+            _hook.SetHook();
+            _hook.OnKeyDownEvent += hook_OnKeyDownEvent; ;
+
+            //
             this.tbHtml.Document.HighlightingStrategy = HighlightingStrategyFactory.CreateHighlightingStrategy("XML");  // TODO: HTML JS 样式太丑了，以后再想办法美化
             webView.LoadingStateChanged += Browser_LoadingStateChanged;
             webView.AddressChanged += Browser_AddressChanged;
@@ -70,11 +75,24 @@ namespace TinyBrowser
                 btnLoadHtml_Click(null, null);
         }
 
+        /// <summary>处理全局钩子事件（快捷键）</summary>
+        private void hook_OnKeyDownEvent(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.H | Keys.Control)) this.Hide();   // Ctrl+H隐藏窗口
+            if (e.KeyData == (Keys.C | Keys.Control)) this.Close();  // Ctrl+C 关闭窗口 
+            if (e.KeyData == (Keys.Escape))           this.ToggleFullScreen(false);
+        }
+
         private void FormWeb_FormClosing(object sender, FormClosingEventArgs e)
         {
             this._server.Close();
+            this._hook.UnHook();
         }
 
+
+        //-------------------------------------------------------
+        // Web Server
+        //-------------------------------------------------------
         /// <summary>启用服务器展示网页</summary>
         private void ShowWebWithServer(string filePath)
         {
@@ -228,27 +246,6 @@ namespace TinyBrowser
         //---------------------------------------------------------
         // 全屏控制
         //---------------------------------------------------------
-        // <summary>全屏</summary>
-        private void btnFullScreen_Click(object sender, EventArgs e)
-        {
-            ToggleFullScreen(true);
-        }
-
-        // 用按键控制全屏
-        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
-        {
-            switch (keyData)
-            {
-                case Keys.Escape:
-                    ToggleFullScreen(false);
-                    break;
-                case Keys.F11:
-                    ToggleFullScreen(true);
-                    break;
-            }
-            return false;
-        }
-
         // <summary>切换全屏</summary>
         private void ToggleFullScreen(bool fullscreen)
         {
@@ -266,6 +263,12 @@ namespace TinyBrowser
             }
         }
 
+
+        // <summary>全屏</summary>
+        private void btnFullScreen_Click(object sender, EventArgs e)
+        {
+            ToggleFullScreen(true);
+        }
 
 
     }

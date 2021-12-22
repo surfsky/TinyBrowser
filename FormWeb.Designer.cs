@@ -30,17 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWeb));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbUrl = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.webView = new CefSharp.WinForms.ChromiumWebBrowser();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tbHtml = new ICSharpCode.TextEditor.TextEditorControl();
             this.btnBack = new System.Windows.Forms.ToolStripButton();
             this.btnForward = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tbUrl = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAbout = new System.Windows.Forms.ToolStripButton();
             this.btnFullScreen = new System.Windows.Forms.ToolStripButton();
             this.btnDebug = new System.Windows.Forms.ToolStripButton();
@@ -48,6 +43,11 @@
             this.btnLoadFile = new System.Windows.Forms.ToolStripButton();
             this.btnLoadServer = new System.Windows.Forms.ToolStripButton();
             this.btnGo = new System.Windows.Forms.ToolStripButton();
+            this.webView = new CefSharp.WinForms.ChromiumWebBrowser();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbHtml = new ICSharpCode.TextEditor.TextEditorControl();
             this.toolStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -73,94 +73,17 @@
             this.btnGo});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1515, 47);
+            this.toolStrip.Size = new System.Drawing.Size(1355, 44);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip";
             this.toolStrip.DoubleClick += new System.EventHandler(this.toolStrip_DoubleClick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 47);
-            // 
-            // tbUrl
-            // 
-            this.tbUrl.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
-            this.tbUrl.Name = "tbUrl";
-            this.tbUrl.Size = new System.Drawing.Size(900, 47);
-            this.tbUrl.Text = "https://lbs.qq.com/webDemoCenter/javascriptV2/mapOperate/createMap";
-            this.tbUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbUrl_KeyUp);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 47);
-            // 
-            // webView
-            // 
-            this.webView.ActivateBrowserOnCreation = false;
-// TODO: “”的代码生成失败，原因是出现异常“无效的基元类型: System.IntPtr。请考虑使用 CodeObjectCreateExpression。”。
-            this.webView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webView.Location = new System.Drawing.Point(4, 4);
-            this.webView.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.webView.Name = "webView";
-            this.webView.Size = new System.Drawing.Size(1499, 778);
-            this.webView.TabIndex = 1;
-            // 
-            // tabControl
-            // 
-            this.tabControl.Alignment = System.Windows.Forms.TabAlignment.Bottom;
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 47);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1515, 815);
-            this.tabControl.TabIndex = 2;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.webView);
-            this.tabPage1.Location = new System.Drawing.Point(4, 4);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1507, 786);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Web";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.tbHtml);
-            this.tabPage2.Location = new System.Drawing.Point(4, 4);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(1884, 983);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "HTML";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tbHtml
-            // 
-            this.tbHtml.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbHtml.IsReadOnly = false;
-            this.tbHtml.Location = new System.Drawing.Point(4, 4);
-            this.tbHtml.Margin = new System.Windows.Forms.Padding(4);
-            this.tbHtml.Name = "tbHtml";
-            this.tbHtml.Size = new System.Drawing.Size(1876, 975);
-            this.tbHtml.TabIndex = 0;
             // 
             // btnBack
             // 
             this.btnBack.Image = global::TinyBrowser.Properties.Resources.reverse_green;
             this.btnBack.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(29, 44);
+            this.btnBack.Size = new System.Drawing.Size(24, 41);
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnForward
@@ -168,7 +91,7 @@
             this.btnForward.Image = global::TinyBrowser.Properties.Resources.forward;
             this.btnForward.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(29, 44);
+            this.btnForward.Size = new System.Drawing.Size(24, 41);
             this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
             // btnRefresh
@@ -176,9 +99,28 @@
             this.btnRefresh.Image = global::TinyBrowser.Properties.Resources.arrow_refresh;
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(29, 44);
+            this.btnRefresh.Size = new System.Drawing.Size(24, 41);
             this.btnRefresh.ToolTipText = "刷新";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 44);
+            // 
+            // tbUrl
+            // 
+            this.tbUrl.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.tbUrl.Name = "tbUrl";
+            this.tbUrl.Size = new System.Drawing.Size(676, 44);
+            this.tbUrl.Text = "https://lbs.qq.com/webDemoCenter/javascriptV2/mapOperate/createMap";
+            this.tbUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbUrl_KeyUp);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 44);
             // 
             // btnAbout
             // 
@@ -186,7 +128,7 @@
             this.btnAbout.Image = global::TinyBrowser.Properties.Resources.information;
             this.btnAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(43, 44);
+            this.btnAbout.Size = new System.Drawing.Size(36, 41);
             this.btnAbout.Text = "关于";
             this.btnAbout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
@@ -197,7 +139,7 @@
             this.btnFullScreen.Image = global::TinyBrowser.Properties.Resources.arrow_nw_ne_sw_se;
             this.btnFullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFullScreen.Name = "btnFullScreen";
-            this.btnFullScreen.Size = new System.Drawing.Size(43, 44);
+            this.btnFullScreen.Size = new System.Drawing.Size(36, 41);
             this.btnFullScreen.Text = "全屏";
             this.btnFullScreen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnFullScreen.Click += new System.EventHandler(this.btnFullScreen_Click);
@@ -208,7 +150,7 @@
             this.btnDebug.Image = global::TinyBrowser.Properties.Resources.bug;
             this.btnDebug.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDebug.Name = "btnDebug";
-            this.btnDebug.Size = new System.Drawing.Size(43, 44);
+            this.btnDebug.Size = new System.Drawing.Size(36, 41);
             this.btnDebug.Text = "调试";
             this.btnDebug.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDebug.Click += new System.EventHandler(this.btnDebug_Click);
@@ -219,7 +161,7 @@
             this.btnLoadHtml.Image = global::TinyBrowser.Properties.Resources.html;
             this.btnLoadHtml.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLoadHtml.Name = "btnLoadHtml";
-            this.btnLoadHtml.Size = new System.Drawing.Size(87, 44);
+            this.btnLoadHtml.Size = new System.Drawing.Size(70, 41);
             this.btnLoadHtml.Text = "加载HTML";
             this.btnLoadHtml.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLoadHtml.Click += new System.EventHandler(this.btnLoadHtml_Click);
@@ -230,7 +172,7 @@
             this.btnLoadFile.Image = global::TinyBrowser.Properties.Resources.folder;
             this.btnLoadFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLoadFile.Name = "btnLoadFile";
-            this.btnLoadFile.Size = new System.Drawing.Size(73, 44);
+            this.btnLoadFile.Size = new System.Drawing.Size(60, 41);
             this.btnLoadFile.Text = "加载文件";
             this.btnLoadFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLoadFile.Click += new System.EventHandler(this.btnLoadFile_Click);
@@ -241,7 +183,7 @@
             this.btnLoadServer.Image = global::TinyBrowser.Properties.Resources.folder_home;
             this.btnLoadServer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLoadServer.Name = "btnLoadServer";
-            this.btnLoadServer.Size = new System.Drawing.Size(73, 44);
+            this.btnLoadServer.Size = new System.Drawing.Size(60, 41);
             this.btnLoadServer.Text = "加载网站";
             this.btnLoadServer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLoadServer.ToolTipText = "加载网站";
@@ -253,20 +195,74 @@
             this.btnGo.Image = global::TinyBrowser.Properties.Resources.world_go;
             this.btnGo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGo.Name = "btnGo";
-            this.btnGo.Size = new System.Drawing.Size(73, 44);
+            this.btnGo.Size = new System.Drawing.Size(60, 41);
             this.btnGo.Text = "浏览网页";
             this.btnGo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
             // 
+            // webView
+            // 
+            this.webView.ActivateBrowserOnCreation = false;
+// TODO: “”的代码生成失败，原因是出现异常“无效的基元类型: System.IntPtr。请考虑使用 CodeObjectCreateExpression。”。
+            this.webView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webView.Location = new System.Drawing.Point(0, 0);
+            this.webView.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.webView.Name = "webView";
+            this.webView.Size = new System.Drawing.Size(1347, 779);
+            this.webView.TabIndex = 1;
+            // 
+            // tabControl
+            // 
+            this.tabControl.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 44);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(1355, 805);
+            this.tabControl.TabIndex = 2;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.webView);
+            this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(1347, 779);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Web";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.tbHtml);
+            this.tabPage2.Location = new System.Drawing.Point(4, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(1128, 626);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "HTML";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tbHtml
+            // 
+            this.tbHtml.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbHtml.IsReadOnly = false;
+            this.tbHtml.Location = new System.Drawing.Point(3, 3);
+            this.tbHtml.Name = "tbHtml";
+            this.tbHtml.Size = new System.Drawing.Size(1122, 620);
+            this.tbHtml.TabIndex = 0;
+            // 
             // FormWeb
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1515, 862);
+            this.ClientSize = new System.Drawing.Size(1355, 849);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.toolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormWeb";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TinyBrowser";

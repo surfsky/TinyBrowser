@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Components\CacheHelper.cs" />
     <Compile Include="Components\Common.cs" />
+    <Compile Include="Components\KeyboardHooker.cs" />
     <Compile Include="Components\TinyWebServer.cs" />
     <Compile Include="Components\Win32.cs" />
     <Compile Include="FormWeb.cs">
@@ -99,6 +100,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="Resources\anchor.png" />
   </ItemGroup>
   <ItemGroup>

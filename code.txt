@@ -13,3 +13,86 @@ this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormWeb_KeyUp);
             //if (msg.Msg == WM_KEYDOWN | msg.Msg == WM_SYSKEYDOWN)
             {
             }
+
+
+IMessageFilter
+        Application.AddMessageFilter(new MsgFilter());
+        public class MsgFilter : IMessageFilter
+        {
+            public bool PreFilterMessage(ref Message m)
+            {
+                //Console.WriteLine(string.Format("<APP> MSG={0}, WPARAM={1}, LPARAM={2}", m.Msg, m.WParam, m.LParam));
+                return false;
+            }
+        }
+
+
+        public partial class FormWeb : Form, IMessageFilter
+        Application.AddMessageFilter(this);
+
+        // 用按键控制全屏（焦点在网页时无效）
+        public bool PreFilterMessage(ref Message m)
+        {
+            Console.WriteLine(string.Format("<FLT> MSG={0}, WPARAM={1}, LPARAM={2}", m.Msg, m.WParam, m.LParam));
+            if (m.Msg == Win32.WM_KEYDOWN || m.Msg == Win32.WM_SYSKEYDOWN)
+            {
+                if ((int)m.WParam == (int)Keys.Escape)
+                {
+                    Console.WriteLine("-----------------------Escape----------------------");
+                    ToggleFullScreen(false);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+其它消息捕捉方式
+        this.webView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.webView_MouseMove);
+        this.webView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.webView_KeyUp);
+            
+
+        // 试图捕捉鼠标（失败）
+        private void webView_MouseMove(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine(string.Format("<MOV> X={0}, Y={1}", e.X, e.Y));
+
+        }
+        // <summary>切换全屏（无效）</summary>
+        private void webView_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                ToggleFullScreen(false);
+        }
+
+
+        // 用按键控制全屏（焦点在网页时无效）
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+            Console.WriteLine(string.Format("KEY={0}, VALUE={1}", keyData, (int)keyData));
+            switch (keyData)
+            {
+                case Keys.Escape:
+                    ToggleFullScreen(false);
+                    break;
+                case Keys.F11:
+                    ToggleFullScreen(true);
+                    break;
+            }
+            return false;
+        }
+
+
+        // 用按键控制全屏（焦点在网页时无效）
+        protected override void WndProc(ref System.Windows.Forms.Message m)
+        {
+            if (m.Msg == Win32.WM_KEYDOWN || m.Msg == Win32.WM_SYSKEYDOWN)
+            {
+                Console.WriteLine(string.Format("<WND> MSG={0}, WPARAM={1}, LPARAM={2}", m.Msg, m.WParam, m.LParam));
+                if ((int)m.WParam == (int)Keys.Escape)
+                {
+                    ToggleFullScreen(false);
+                    return;
+                }
+            }
+            base.WndProc(ref m);
+        }

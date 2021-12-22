@@ -19,5 +19,6 @@ namespace TinyBrowser
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormWeb());
         }
+
     }
 }
