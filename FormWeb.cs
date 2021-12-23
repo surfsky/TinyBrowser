@@ -23,6 +23,7 @@ namespace TinyBrowser
         string _basePath = "";  // 网页基础路径
         bool _showHtml = true;  // 是否查看网页源代码
         bool _userServer = false; // 是否使用嵌入服务器
+        bool _actived = true;  // 窗口是否激活
         TinyWebServer _server = new TinyWebServer();
         KeyboardHook _hook = new KeyboardHook();
 
@@ -56,7 +57,9 @@ namespace TinyBrowser
         {
             // 全局键盘钩子
             _hook.SetHook();
-            _hook.OnKeyDownEvent += hook_OnKeyDownEvent; ;
+            _hook.OnKeyDownEvent += hook_OnKeyDownEvent;
+            this.Activated += (s,a) => _actived = true;
+            this.Deactivate += (s, a) => _actived = false;
 
             //
             this.tbHtml.Document.HighlightingStrategy = HighlightingStrategyFactory.CreateHighlightingStrategy("XML");  // TODO: HTML JS 样式太丑了，以后再想办法美化
@@ -78,9 +81,12 @@ namespace TinyBrowser
         /// <summary>处理全局钩子事件（快捷键）</summary>
         private void hook_OnKeyDownEvent(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == (Keys.H | Keys.Control)) this.Hide();   // Ctrl+H隐藏窗口
-            if (e.KeyData == (Keys.C | Keys.Control)) this.Close();  // Ctrl+C 关闭窗口 
-            if (e.KeyData == (Keys.Escape))           this.ToggleFullScreen(false);
+            if (this._actived)
+            {
+                if (e.KeyData == (Keys.H | Keys.Control)) this.Hide();   // Ctrl+H隐藏窗口
+                if (e.KeyData == (Keys.C | Keys.Control)) this.Close();  // Ctrl+C 关闭窗口 
+                if (e.KeyData == (Keys.Escape)) this.ToggleFullScreen(false);
+            }
         }
 
         private void FormWeb_FormClosing(object sender, FormClosingEventArgs e)
