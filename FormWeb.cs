@@ -61,7 +61,7 @@ namespace TinyBrowser
             this.Activated += (s,a) => _actived = true;
             this.Deactivate += (s, a) => _actived = false;
 
-            //
+            // 网页事件
             this.tbHtml.Document.HighlightingStrategy = HighlightingStrategyFactory.CreateHighlightingStrategy("XML");  // TODO: HTML JS 样式太丑了，以后再想办法美化
             webView.LoadingStateChanged += Browser_LoadingStateChanged;
             webView.AddressChanged += Browser_AddressChanged;
@@ -109,8 +109,9 @@ namespace TinyBrowser
             var url = string.Format("http://127.0.0.1:{0}/{1}", port, name);
             _server.Close();
             _server.Start(folder, port, ip);
-            _showHtml = true;
+            _showHtml = false;
             webView.LoadUrl(url);
+            this.tbHtml.Text = IO.ReadFileText(filePath);
             this.tbUrl.Text = url;
             this.tabControl.SelectedIndex = 0;
         }
@@ -122,12 +123,15 @@ namespace TinyBrowser
         {
             if (_showHtml)
             {
-                var task = e.Frame.GetSourceAsync();
-                task.ContinueWith(t =>
+                if (e.Frame.IsValid)
                 {
-                    if (!t.IsFaulted)
-                        Invoke(() => { this.tbHtml.Text = t.Result; });
-                });
+                    var task = e.Frame.GetSourceAsync();
+                    task.ContinueWith(t =>
+                    {
+                        if (!t.IsFaulted)
+                            Invoke(() => { this.tbHtml.Text = t.Result; });
+                    });
+                }
             }
         }
 
@@ -167,7 +171,7 @@ namespace TinyBrowser
             _showHtml = false;
             webView.LoadHtml(
                 this.tbHtml.Text,
-                @"/", //_basePath,
+                @"http://localhost/", //_basePath,
                 new UTF8Encoding(false)
                 );
             this.tabControl.SelectedIndex = 0;
@@ -232,7 +236,10 @@ namespace TinyBrowser
             {
                 var filePath = dlg.FileName;
                 this.tbUrl.Text = filePath;
-                btnGo_Click(null, null);
+                this.tbHtml.Text = IO.ReadFileText(filePath);
+                _showHtml = false;
+                this.webView.LoadUrl(this.tbUrl.Text);
+                this.tabControl.SelectedIndex = 0;
             }
         }
 

@@ -92,6 +92,7 @@ namespace TinyBrowser.Components
             //{ "extension", "content type" }
             { "htm", "text/html" },
             { "html", "text/html" },
+            { "js", "text/javascript" },
             { "xml", "text/xml" },
             { "txt", "text/plain" },
             { "css", "text/css" },
