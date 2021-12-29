@@ -7,6 +7,8 @@
     页面放缩：CefWebBrowser.SetZoomLevel(0);
     输入参数，与功能控制（如调试）
 
+列出文件
+
 功能方向
     自动化测试，可编写执行脚本
     支持 qml

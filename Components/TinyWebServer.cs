@@ -93,14 +93,22 @@ namespace TinyBrowser.Components
             { "htm", "text/html" },
             { "html", "text/html" },
             { "js", "text/javascript" },
+            { "jsx", "text/javascript" },
             { "xml", "text/xml" },
             { "txt", "text/plain" },
             { "css", "text/css" },
+            { "json", "text/json" },
+            { "md", "text/markdown" },
+            { "qml", "text/qml" },
+            { "yml", "text/yml" },
             { "png", "image/png" },
             { "gif", "image/gif" },
             { "jpg", "image/jpg" },
             { "jpeg", "image/jpeg" },
-            { "zip", "application/zip"}
+            { "svg", "image/svg" },
+            { "zip", "application/zip"},
+            { "rar", "application/rar"},
+            { "7z", "application/7zip"}
         };
 
         //----------------------------------------------------------

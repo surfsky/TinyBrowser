@@ -139,7 +139,8 @@ namespace TinyBrowser
         {
             Invoke(() =>
             {
-                //this.tbUrl.Text = e.Address.UrlDecode();  // e.Address 是目录不是文件
+                Console.WriteLine(e.Address);
+                this.tbUrl.Text = e.Address.UrlDecode();  // e.Address 是目录不是文件
             });
         }
 
@@ -207,6 +208,7 @@ namespace TinyBrowser
         /// <summary>刷新页面</summary>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            this._showHtml = true;
             this.webView.Reload();
         }
 
