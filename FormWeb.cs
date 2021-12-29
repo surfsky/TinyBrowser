@@ -83,8 +83,8 @@ namespace TinyBrowser
         {
             if (this._actived)
             {
-                if (e.KeyData == (Keys.H | Keys.Control)) this.Hide();   // Ctrl+H隐藏窗口
-                if (e.KeyData == (Keys.C | Keys.Control)) this.Close();  // Ctrl+C 关闭窗口 
+                //if (e.KeyData == (Keys.H | Keys.Control)) this.Hide();   // Ctrl+H隐藏窗口
+                //if (e.KeyData == (Keys.C | Keys.Control)) this.Close();  // Ctrl+C 关闭窗口 
                 if (e.KeyData == (Keys.Escape)) this.ToggleFullScreen(false);
             }
         }
